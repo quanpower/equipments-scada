@@ -40,3 +40,22 @@ def request_loader(request):
     username = request.form.get('username')
     user = User.query.filter_by(username=username).first()
     return user if user else None
+
+
+
+class Record(db.Model):
+
+    __tablename__ = 'Record'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    AorB = Column(String)
+    ticketNo = Column(String)
+    heatNo = Column(String)
+    quantity = Column(String)
+    productHeight = Column(String)
+    ringHeight = Column(String)
+    jobNo = Column(String)
+    datetime = Column(String)
+
+    def __repr__(self):
+        return str(self.id)

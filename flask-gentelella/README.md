@@ -86,3 +86,6 @@ This project shows:
     sudo docker-compose pull && sudo docker-compose build && sudo docker-compose up -d
 
 ### 3. Go to http://server_address, create an account and log in
+
+
+set flask_app=gentelella.py

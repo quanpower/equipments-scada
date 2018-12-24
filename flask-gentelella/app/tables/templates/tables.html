@@ -52,36 +52,15 @@
             </div>
             <div class="x_content">
 
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
+            <ul id=table_A class="list-group">
+              <li id=ticketNo_A class="list-group-item">工单号:</li>
+              <li id=heatNo_A class="list-group-item">炉号</li>
+              <li id=quantity_A class="list-group-item">数量</li>
+              <li id=productHeight_A class="list-group-item">产品高度</li>
+              <li id=ringHeight_A class="list-group-item">延长</li>
+              <li id=jobNo_A class="list-group-item">Vestibulum at eros</li>
+              <li id=datetime_A class="list-group-item">Vestibulum at eros</li>
+            </ul>
 
             </div>
           </div>
@@ -110,36 +89,16 @@
             </div>
             <div class="x_content">
 
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
+
+            <ul id=table_A class="list-group">
+              <li id=ticketNo_A class="list-group-item">工单号:</li>
+              <li id=heatNo_A class="list-group-item">炉号</li>
+              <li id=quantity_A class="list-group-item">数量</li>
+              <li id=productHeight_A class="list-group-item">产品高度</li>
+              <li id=ringHeight_A class="list-group-item">延长</li>
+              <li id=jobNo_A class="list-group-item">Vestibulum at eros</li>
+              <li id=datetime_A class="list-group-item">Vestibulum at eros</li>
+            </ul>
 
             </div>
           </div>
@@ -152,6 +111,37 @@
 
 {% block javascripts %}
   {{ super() }}
+
+<script type="text/javascript">
+    
+    
+     //setInterval配合ajax实现实时刷新前台数据的功能
+
+        setInterval(function () {
+
+            $.ajax({
+                type: "get",
+                url: "base_blueprint.record",
+                success: function (msg) {
+                  console.log(msg.record_latest)
+                  console.log(msg.record_latest.record_A)
+                  console.log(msg.record_latest.record_B)
+                  $("#table_A").html("error");                           
+                },
+
+                error: function (XmlHttpRequest, textStatus, errorThrown) {
+                    alert("错误信息;" + XmlHttpRequest.status);
+                }
+
+            })
+
+        }
+, 1000)
+
+                   
+    </script>
+
+
 {% endblock javascripts %}
 
 

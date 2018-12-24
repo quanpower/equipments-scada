@@ -56,7 +56,7 @@
             <div class="x_content">
 
               <div class="panel-body" style="padding-bottom:0px;">
-                      <div class="panel panel-default">
+<!--                       <div class="panel panel-default">
                           <div class="panel-heading">查询条件</div>
                           <div class="panel-body">
                               <form id="formSearch" class="form-horizontal">
@@ -76,7 +76,7 @@
                               </form>
                           </div>
                       </div>       
-
+ -->
                       <table id="tb_history"></table>
               </div>
 
@@ -92,7 +92,7 @@
 {% block javascripts %}
   {{ super() }}
   <!-- Datatables -->
-  <script src="{{ url_for('static', filename='vendors/bootstrap-table/bootstrap-table-locale-all.js') }}""></script>
+  <script src="{{ url_for('static', filename='vendors/bootstrap-table/bootstrap-table-zh-CN.min.js') }}""></script>
   <script src="{{ url_for('static', filename='vendors/bootstrap-table/bootstrap-table.js') }}""></script>
 
 <script type="text/javascript">
@@ -105,12 +105,13 @@
     var oButtonInit = new ButtonInit();
     oButtonInit.Init();
 });
+
 var TableInit = function () {
     var oTableInit = new Object();
     //初始化Table
     oTableInit.Init = function () {
         $('#tb_history').bootstrapTable({
-            url: '/api/history',         //请求后台的URL（*）
+            url: '/records',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
             striped: true,                      //是否显示行间隔色
@@ -129,35 +130,50 @@ var TableInit = function () {
             showColumns: true,                  //是否显示所有的列
             showRefresh: true,                  //是否显示刷新按钮
             minimumCountColumns: 2,             //最少允许的列数
-            clickToSelect: true,                //是否启用点击选中行
+            clickToSelect: false,                //是否启用点击选中行
             height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
             uniqueId: "id",                     //每一行的唯一标识，一般为主键列
             showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
-            detailView: true,                   //是否显示父子表
+            detailView: false, 
+
+
             columns: [{
                 checkbox: true,
                 visible: true 
             }, {
-                field: 'name',
-                title: 'name',
+                field: 'AorB',
+                title: 'A/B',
                 sortable: true
             }, {
-                field: 'device_name',
-                title: 'device_name',
+                field: 'ticketNo',
+                title: 'ticketNo',
                 sortable: true
             }, {
-                field: 'status',
-                title: 'status',
+                field: 'heatNo',
+                title: 'heatNo',
                 sortable: true
             },{
-               field:'id',
-               title: '操作',
-               width: 120,
-               align: 'center',
-               valign: 'middle',
-               formatter: actionFormatter
-                 },
+                field: 'quantity',
+                title: 'quantity',
+                sortable: true
+            },{
+                field: 'productHeight',
+                title: 'productHeight',
+                sortable: true
+            },{
+                field: 'ringHeight',
+                title: 'ringHeight',
+                sortable: true
+            },{
+                field: 'jobNo',
+                title: 'jobNo',
+                sortable: true
+            },{
+                field: 'datetime',
+                title: 'datetime',
+                sortable: true
+            },
              ],
             rowStyle: function (row, index) {
                  var classesArr = ['success', 'info'];

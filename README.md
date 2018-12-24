@@ -1,2 +1,0 @@
-# equipments-scada
-equipments-scada

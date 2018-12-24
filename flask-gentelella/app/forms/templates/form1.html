@@ -4,26 +4,9 @@
   <div class="right_col" role="main">
     <div class="">
       <div class="page-title">
-
         <div class="title_left">
           <h3>表单录入</h3>
         </div>
-
-      
-        <div>
-              {% with messages = get_flashed_messages() %}
-                  {% if messages %}
-                      {% for category, message in get_flashed_messages(with_categories=True) %}
-                      <div class="alert alert-success alert-dismissible">
-                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                          <h4><i class="icon fa fa-check"></i> 操作成功!</h4>
-                              <p class="flash">{{ 'Error: ' if category == 'error' else '' }}{{ message }}</p>
-                      </div>
-                      {% endfor %}
-                  {% endif %}
-              {% endwith %}
-        </div>
-
 
         <div class="title_right">
           <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -45,7 +28,6 @@
           <div class="x_panel">
             <div class="x_title">
               <h2>Form</h2>
-
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -64,35 +46,31 @@
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-              <form class="form-horizontal form-label-left"  id ="form" method='post' action="/forms/form">
-              {{ form.csrf_token }}
+              <br />
+              <form class="form-horizontal form-label-left"  id ="A_form" method='post'>
 
                 <div class="col-md-6 col-xs-12">
-
-                  <div align="center">
-                    <h3>A</h3>
-                  </div>
 
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">工单号</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-
-                      {{ form.ticketNo_A }}
+                      <input type="text" class="form-control" name='ticketNo' placeholder="ticketNo_A">
+                      <!-- {{ form.ticketNo }} -->
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">炉号</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.heatNo_A }}
-                   
+                      <!-- {{ form.heatNo }} -->
+                      <input type="text" class="form-control" name='heatNo' placeholder="heatNo_A">
 
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">数量</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.quantity_A }}
-                    
+                      <!-- {{ form.quantity }} -->
+                      <input type="text" class="form-control" name='quantity' placeholder="quantity_A">
                       pcs
                     </div>
                   </div>
@@ -101,8 +79,8 @@
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">产品高度</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.productHeight_A }}
-                      
+                      <!-- {{ form.productHeight }} -->
+                      <input type="text" class="form-control" name='productHeight' placeholder="productHeight_A">
                       mm
                     </div>
                   </div>
@@ -111,8 +89,8 @@
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">延长环高度</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.ringHeight_A }}
-                      
+                      <!-- {{ form.ringHeight }} -->
+                      <input type="text" class="form-control" name='productHeight' placeholder="productHeight_A">
                     mm
                     </div>
                   </div>
@@ -120,8 +98,8 @@
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">工号</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.jobNo_A }}
-                      
+                      <!-- {{ form.jobNo }} -->
+                      <input type="text" class="form-control" name='jobNo' placeholder="jobNo_A">
 
                     </div>
                   </div>
@@ -130,30 +108,26 @@
 
                 <div class="col-md-6 col-xs-12">
 
-                  <div align="center">
-                    <h3>B</h3>
-                  </div>
-
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">工单号</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      
-                      {{ form.ticketNo_B }}
+                      <input type="text" class="form-control" name='ticketNo_B' placeholder="ticketNo_B">
+                      <!-- {{ form.ticketNo }} -->
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">炉号</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.heatNo_B }}
-
+                      <!-- {{ form.heatNo }} -->
+                      <input type="text" class="form-control" name='heatNo_B' placeholder="heatNo_B">
 
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">数量</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.quantity_B }}
-  
+                      <!-- {{ form.quantity }} -->
+                      <input type="text" class="form-control" name='quantity_B' placeholder="quantity_B">
                       pcs
                     </div>
                   </div>
@@ -162,7 +136,8 @@
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">产品高度</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.productHeight_B }}
+                      <!-- {{ form.productHeight }} -->
+                      <input type="text" class="form-control" name='productHeight_B' placeholder="productHeight_B">
                       mm
                     </div>
                   </div>
@@ -171,7 +146,8 @@
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">延长环高度</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.ringHeight_B }}
+                      <!-- {{ form.ringHeight }} -->
+                      <input type="text" class="form-control" name='ringHeight_B' placeholder="ringHeight_B">
                     mm
                     </div>
                   </div>
@@ -179,29 +155,26 @@
                   <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12">工号</label>
                     <div class="col-md-9 col-sm-9 col-xs-12">
-                      {{ form.jobNo_B }}
-
+                      <!-- {{ form.jobNo }} -->
+                      <input type="text" class="form-control" name='jobNo_B' placeholder="jobNo_B">
 
                     </div>
                   </div>
                 </div>
 
-    
+              <br />
 
-              <!-- <div class="ln_solid"></div> -->
               <div class="ln_solid"></div>
-                <div class="col-md-12 col-xs-12" align="right">
+                <div class="form-group">
                   <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                     <button type="button" class="btn btn-primary">Cancel</button>
                     <button type="reset" class="btn btn-primary">Reset</button>
-                    <input type="submit" class="btn btn-success" value="Submit">
-<!--                     <button type="submit" class="btn btn-success" onclick=ajaxForm()> Submit</button> -->
+
+                    <button type="submit" class="btn btn-success" onclick=ajaxForm()> Submit</button>
                   </div>
                 </div>
 
               </form>
-
-
             </div>
           </div>
         </div>
@@ -217,7 +190,47 @@
 
 {% block javascripts %}
   {{ super()}}
-  
+  <!-- Parsley -->
+  <script src="{{ url_for('static', filename='vendors/parsleyjs/dist/parsley.min.js') }}"></script>
+
+  <script type="text/javascript">
+    function ajaxForm(){
+            varifyinput();
+            var form= new FormData(document.getElementById("A_form"));
+            $.ajax({
+                url:"{{ url_for('forms_blueprint.form') }}",
+                type:"post",
+                data:form,
+                dataType: 'json',
+                processData:false,
+                contentType:false,
+                success:function(data){
+                        create_table(data.result);
+                },
+                error:function(e){
+                        alert("没有取得数据");
+                }
+            })
+        }
+
+    $("#demo_form").submit(function(e){
+      e.preventDefault();
+
+        $.ajax({
+            url:"/forms/form",
+            type:'POST',
+            data: $(this).serialize(),   // 这个序列化传递很重要
+            headers:{
+                "X-CSRF-Token": getCookie('csrf_token')
+            },
+            success:function (resp) {
+                // window.location.href = "/admin/page";
+                if(resp.error){
+                    console.log(resp.errmsg);
+                }
+            }
+        })
+    });
 
   </script>
 {% endblock javascripts %}

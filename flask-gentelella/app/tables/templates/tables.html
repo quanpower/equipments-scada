@@ -4,6 +4,16 @@
 
 {% block stylesheets %}
   {{ super() }}
+
+  <style>
+.table_a{ color:#F00; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
+
+.table_a_name{ color:#000; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
+
+.table_b{ color:#00f; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
+
+.table_b_name{ color:#000; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
+</style>
 {% endblock stylesheets %}
 
 {% block content %}
@@ -32,7 +42,9 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>A</h2>
+                <div align="center">
+                    <h4 style="color:#F00;font-weight:bold;"">A</h4>
+                </div>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -53,13 +65,13 @@
             <div class="x_content">
 
             <ul id=table_A class="list-group">
-              <li id=ticketNo_A class="list-group-item">工单号:</li>
-              <li id=heatNo_A class="list-group-item">炉号</li>
-              <li id=quantity_A class="list-group-item">数量</li>
-              <li id=productHeight_A class="list-group-item">产品高度</li>
-              <li id=ringHeight_A class="list-group-item">延长</li>
-              <li id=jobNo_A class="list-group-item">Vestibulum at eros</li>
-              <li id=datetime_A class="list-group-item">Vestibulum at eros</li>
+              <li class="list-group-item"><span class="table_a_name">工单号:</span> <span id=ticketNo_A class="table_a"></span></li>
+              <li class="list-group-item"><span class="table_a_name">炉号:</span> <span id=heatNo_A class="table_a"></span></li>
+              <li class="list-group-item"><span class="table_a_name">数量:</span> <span id=quantity_A class="table_a"></span>pcs</li>
+              <li class="list-group-item"><span class="table_a_name">产品高度:</span> <span id=productHeight_A class="table_a"></span>mm</li>
+              <li class="list-group-item"><span class="table_a_name">延长环高度:</span> <span id=ringHeight_A class="table_a"></span>mm</li>
+              <li class="list-group-item"><span class="table_a_name">工号:</span> <span id=jobNo_A class="table_a"></span></li>
+              <li class="list-group-item"><span class="table_a_name">日期时间:</span> <span id=datetime_A class="table_a"></span></li>
             </ul>
 
             </div>
@@ -69,7 +81,9 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
-              <h2>B</h2>
+                <div align="center">
+                    <h4 style="color:#00f;font-weight:bold;"">B</h4>
+                </div>
               <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -90,14 +104,14 @@
             <div class="x_content">
 
 
-            <ul id=table_A class="list-group">
-              <li id=ticketNo_A class="list-group-item">工单号:</li>
-              <li id=heatNo_A class="list-group-item">炉号</li>
-              <li id=quantity_A class="list-group-item">数量</li>
-              <li id=productHeight_A class="list-group-item">产品高度</li>
-              <li id=ringHeight_A class="list-group-item">延长</li>
-              <li id=jobNo_A class="list-group-item">Vestibulum at eros</li>
-              <li id=datetime_A class="list-group-item">Vestibulum at eros</li>
+            <ul id=table_B class="list-group">
+              <li class="list-group-item"><span class="table_b_name">工单号:</span> <span id=ticketNo_B class="table_b"></span></li>
+              <li class="list-group-item"><span class="table_b_name">炉号:</span> <span id=heatNo_B class="table_b"></span></li>
+              <li class="list-group-item"><span class="table_b_name">数量:</span> <span id=quantity_B class="table_b"></span>pcs</li>
+              <li class="list-group-item"><span class="table_b_name">产品高度:</span> <span id=productHeight_B class="table_b"></span>mm</li>
+              <li class="list-group-item"><span class="table_b_name">延长环高度:</span> <span id=ringHeight_B class="table_b"></span>mm</li>
+              <li class="list-group-item"><span class="table_b_name">工号:</span> <span id=jobNo_B class="table_b"></span></li>
+              <li class="list-group-item"><span class="table_b_name">日期时间:</span> <span id=datetime_B class="table_b"></span></li>
             </ul>
 
             </div>
@@ -121,16 +135,29 @@
 
             $.ajax({
                 type: "get",
-                url: "base_blueprint.record",
+                url: "/record",
                 success: function (msg) {
-                  console.log(msg.record_latest)
                   console.log(msg.record_latest.record_A)
                   console.log(msg.record_latest.record_B)
-                  $("#table_A").html("error");                           
+                  $("#ticketNo_A").html(msg.record_latest.record_A.ticketNo)
+                  $("#heatNo_A").html(msg.record_latest.record_A.heatNo)
+                  $("#quantity_A").html(msg.record_latest.record_A.quantity)
+                  $("#productHeight_A").html(msg.record_latest.record_A.productHeight)
+                  $("#ringHeight_A").html(msg.record_latest.record_A.ringHeight)
+                  $("#jobNo_A").html(msg.record_latest.record_A.jobNo)
+                  $("#datetime_A").html(msg.record_latest.record_A.datetime)                                                             
+                  $("#ticketNo_B").html(msg.record_latest.record_B.ticketNo)
+                  $("#heatNo_B").html(msg.record_latest.record_B.heatNo)
+                  $("#quantity_B").html(msg.record_latest.record_B.quantity)
+                  $("#productHeight_B").html(msg.record_latest.record_B.productHeight)
+                  $("#ringHeight_B").html(msg.record_latest.record_B.ringHeight)
+                  $("#jobNo_B").html(msg.record_latest.record_B.jobNo)
+                  $("#datetime_B").html(msg.record_latest.record_B.datetime)                  
+                
                 },
 
                 error: function (XmlHttpRequest, textStatus, errorThrown) {
-                    alert("错误信息;" + XmlHttpRequest.status);
+                    console.log("错误信息;" + XmlHttpRequest.status);
                 }
 
             })

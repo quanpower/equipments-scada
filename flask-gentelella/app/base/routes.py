@@ -24,6 +24,39 @@ def route_default():
     return redirect(url_for('base_blueprint.login'))
 
 
+@blueprint.route('/record')
+def record():
+    record_A = Record.query.filter_by(AorB='A').order_by(Record.datetime.desc()).first()
+    print('-----record_A-------')
+    print(record_A)
+    record_B = Record.query.filter_by(AorB='B').order_by(Record.datetime.desc()).first()
+    record_A_dict = {'ticketNo':record_A.ticketNo, 'heatNo':record_A.heatNo, 'quantity':record_A.quantity, 
+    'productHeight':record_A.productHeight,'ringHeight':record_A.ringHeight, 'jobNo':record_A.jobNo, 'datetime':record_A.datetime}
+
+    record_B_dict = {'ticketNo':record_B.ticketNo, 'heatNo':record_B.heatNo, 'quantity':record_B.quantity, 
+    'productHeight':record_B.productHeight,'ringHeight':record_B.ringHeight, 'jobNo':record_B.jobNo, 'datetime':record_B.datetime}
+
+    record_latest = {'record_latest':{
+    'record_A':record_A_dict,'record_B':record_B_dict
+    }}
+
+
+    return jsonify(record_latest)
+
+
+
+@blueprint.route('/records')
+def records():
+    records = Record.query.all()
+    record_list = []
+    for record in records:
+        record_dict = {'AorB':record.AorB, 'ticketNo':record.ticketNo, 'heatNo':record.heatNo, 'quantity':record.quantity, 
+    'productHeight':record.productHeight,'ringHeight':record.ringHeight, 'jobNo':record.jobNo, 'datetime':record.datetime}
+        record_list.append(record_dict)
+
+    return jsonify(record_list[::-1])
+
+
 @blueprint.route('/<template>')
 @login_required
 def route_template(template):
@@ -71,39 +104,6 @@ def create_user():
     db.session.add(user)
     db.session.commit()
     return jsonify('success')
-
-
-@blueprint.route('/record')
-def record():
-    record_A = Record.query.filter_by(AorB='A').order_by(Record.datetime.desc()).first()
-    print('-----record_A-------')
-    print(record_A)
-    record_B = Record.query.filter_by(AorB='B').order_by(Record.datetime.desc()).first()
-    record_A_dict = {'ticketNo':record_A.ticketNo, 'heatNo':record_A.heatNo, 'quantity':record_A.quantity, 
-    'productHeight':record_A.productHeight,'ringHeight':record_A.ringHeight, 'jobNo':record_A.jobNo, 'datetime':record_A.datetime}
-
-    record_B_dict = {'ticketNo':record_B.ticketNo, 'heatNo':record_B.heatNo, 'quantity':record_B.quantity, 
-    'productHeight':record_B.productHeight,'ringHeight':record_B.ringHeight, 'jobNo':record_B.jobNo, 'datetime':record_B.datetime}
-
-    record_latest = {'record_latest':{
-    'record_A':record_A_dict,'record_B':record_B_dict
-    }}
-
-
-    return jsonify(record_latest)
-
-
-
-@blueprint.route('/records')
-def records():
-    records = Record.query.all()
-    record_list = []
-    for record in records:
-        record_dict = {'AorB':record.AorB, 'ticketNo':record.ticketNo, 'heatNo':record.heatNo, 'quantity':record.quantity, 
-    'productHeight':record.productHeight,'ringHeight':record.ringHeight, 'jobNo':record.jobNo, 'datetime':record.datetime}
-        record_list.append(record_dict)
-
-    return jsonify(record_list)
 
 
 @blueprint.route('/logout')

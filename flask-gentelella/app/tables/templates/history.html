@@ -95,6 +95,13 @@
   <script src="{{ url_for('static', filename='vendors/bootstrap-table/bootstrap-table-zh-CN.min.js') }}""></script>
   <script src="{{ url_for('static', filename='vendors/bootstrap-table/bootstrap-table.js') }}""></script>
 
+
+  <script src="{{ url_for('static', filename='vendors/bootstrap-table/tableExport.js') }}""></script>
+  <script src="{{ url_for('static', filename='vendors/bootstrap-table/bootstrap-table-export.js') }}""></script>
+  <script src="{{ url_for('static', filename='vendors/bootstrap-table/libs/FileSaver/FileSaver.min.js') }}""></script>
+  <script src="{{ url_for('static', filename='vendors/bootstrap-table/libs/js-xlsx/xlsx.core.min.js') }}""></script>
+  <script src="{{ url_for('static', filename='vendors/bootstrap-table/libs/pdfmake/pdfmake.min.js') }}""></script>
+
 <script type="text/javascript">
 
   $(function () {
@@ -136,7 +143,9 @@ var TableInit = function () {
             showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false, 
-
+            showExport:true,             //是否显示导出按钮
+            exportDataType: "all",              //basic', 'all', 'selected'.
+            exportTypes:['excel','xlsx','csv','pdf'],     //导出类型
 
             columns: [{
                 checkbox: true,
@@ -147,31 +156,31 @@ var TableInit = function () {
                 sortable: true
             }, {
                 field: 'ticketNo',
-                title: 'ticketNo',
+                title: '工单号',
                 sortable: true
             }, {
                 field: 'heatNo',
-                title: 'heatNo',
+                title: '炉号',
                 sortable: true
             },{
                 field: 'quantity',
-                title: 'quantity',
+                title: '数量',
                 sortable: true
             },{
                 field: 'productHeight',
-                title: 'productHeight',
+                title: '产品高度',
                 sortable: true
             },{
                 field: 'ringHeight',
-                title: 'ringHeight',
+                title: '延长环高度',
                 sortable: true
             },{
                 field: 'jobNo',
-                title: 'jobNo',
+                title: '工号',
                 sortable: true
             },{
                 field: 'datetime',
-                title: 'datetime',
+                title: '日期时间',
                 sortable: true
             },
              ],

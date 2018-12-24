@@ -1,6 +1,7 @@
 <div class="left_col scroll-view">
   <div class="navbar nav_title" style="border: 0;">
-    <a href="" class="site_title"><i class="fa fa-spinner"></i> <span>ARCONIC</span></a>
+<!--     <a href="" class="site_title"><i class="fa fa-spinner"></i> <span>ARCONIC</span></a> -->
+    <img alt="Brand" src="{{url_for('static', filename = 'images/logo.png')}}" height="40" width="40" > <span style="color:#fff;font-size: 20px;font-weight: bold;" >ARCONIC</span>
   </div>
 
   <div class="clearfix"></div>
@@ -28,7 +29,9 @@
           <ul class="nav child_menu">
             <li><a href="/forms/form">表单录入</a></li>
             <li><a href="/tables/tables">实时显示</a></li>
-            <li><a href="/tables/history">历史记录</a></li>
+            {% if current_user.username == "admin" %}
+              <li><a href="/tables/history">历史记录</a></li>
+            {% endif %}
           </ul>
         </li>
 

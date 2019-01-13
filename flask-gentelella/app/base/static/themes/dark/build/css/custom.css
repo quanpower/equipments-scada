@@ -351,7 +351,7 @@ html , body{
     position: fixed
 }
 body .container.body .right_col {
-    background: #000000
+    background: blue
 }
 .nav-md .container.body .right_col {
     padding: 10px 20px 0;
@@ -375,7 +375,9 @@ body .container.body .right_col {
     }
     .nav-md .container.body .right_col {
         width: 100%;
-        padding-right: 0
+        padding-right: 0;
+        background: #ff0000
+
     }
     .right_col {
         padding: 10px !important

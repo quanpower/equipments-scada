@@ -6,13 +6,15 @@
   {{ super() }}
 
   <style>
-.table_a{ color:#F00; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
+.table_a{ color:red; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
 
-.table_a_name{ color:#000; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
+.table_a_name{ color:#fff; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
 
-.table_b{ color:#00f; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
+.table_b{ color:yellow; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
 
-.table_b_name{ color:#000; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
+.table_b_name{ color:#fff; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
+
+.list-group-item{background: #31708f;}
 </style>
 {% endblock stylesheets %}
 
@@ -27,7 +29,7 @@
           <div class="x_panel">
             <div class="x_title">
                 <div align="center">
-                    <h4 style="color:#F00;font-weight:bold;">A</h4>
+                    <h4 style="color:red;font-weight:bold;">A</h4>
                 </div>
 
               <div class="clearfix"></div>
@@ -35,7 +37,7 @@
             <div class="x_content">
 
             <ul id=table_A class="list-group">
-              <li class="list-group-item"><span class="table_a_name">工单号:</span> <span id=ticketNo_A class="table_a"></span></li>
+              <li class="list-group-item" ><span class="table_a_name">工单号:</span> <span id=ticketNo_A class="table_a"></span></li>
               <li class="list-group-item"><span class="table_a_name">炉号:</span> <span id=heatNo_A class="table_a"></span></li>
               <li class="list-group-item"><span class="table_a_name">数量:</span> <span id=quantity_A class="table_a"></span>pcs</li>
               <li class="list-group-item"><span class="table_a_name">产品高度:</span> <span id=productHeight_A class="table_a"></span>mm</li>
@@ -52,7 +54,7 @@
           <div class="x_panel">
             <div class="x_title">
                 <div align="center">
-                    <h4 style="color:#00f;font-weight:bold;">B</h4>
+                    <h4 style="color:yellow;font-weight:bold;">B</h4>
                 </div>
 
               <div class="clearfix"></div>

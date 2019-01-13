@@ -351,7 +351,8 @@ html , body{
     position: fixed
 }
 body .container.body .right_col {
-    background: #F7F7F7
+    background: #31708f;
+    color:#fff;
 }
 .nav-md .container.body .right_col {
     padding: 10px 20px 0;
@@ -911,7 +912,7 @@ a:focus {
     padding: 4px 6px
 }
 footer {
-    background: #fff;
+    background: #31708f;
     padding: 15px 20px;
     display: block
 }
@@ -1062,7 +1063,8 @@ h2 {
     margin-bottom: 10px;
     padding: 10px 17px;
     display: inline-block;
-    background: #fff;
+    background: #31708f;
+
     border: 1px solid #E6E9ED;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
@@ -1099,7 +1101,8 @@ h2 {
     width: 100%;
     float: left;
     clear: both;
-    margin-top: 5px
+    margin-top: 5px;
+    background: #31708f;
 }
 .x_content h4 {
     font-size: 16px;

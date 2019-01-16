@@ -5,16 +5,17 @@
 {% block stylesheets %}
   {{ super() }}
 
-  <style>
-.table_a{ color:red; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
+<style>
+.table_a{ color:red; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 200px; }
 
 .table_a_name{ color:#fff; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
 
-.table_b{ color:yellow; text-align: center;display: inline-block;font-size: 20px; font-weight:bold; width: 200px; }
+.table_b{ color:yellow; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 200px; }
 
 .table_b_name{ color:#fff; text-align: center;display: inline-block;font-size: 14px; font-weight:bold; width: 100px; }
 
 .list-group-item{background: #31708f;}
+
 </style>
 {% endblock stylesheets %}
 
@@ -22,14 +23,34 @@
   <div class="right_col" role="main">
     <div class="">
 
+
+      <div class="page-title">
+
+        <div>
+              {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                      {% for category, message in get_flashed_messages(with_categories=True) %}
+                      <div class="alert alert-success alert-dismissible">
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                          <h4><i class="icon fa fa-check"></i> 操作成功!</h4>
+                              <p class="flash">{{ 'Error: ' if category == 'error' else '' }}{{ message }}</p>
+                      </div>
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
+        </div>
+
+      </div>
       <div class="clearfix"></div>
 
       <div class="row">
+
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="x_panel">
             <div class="x_title">
+
                 <div align="center">
-                    <h4 style="color:red;font-weight:bold;">A</h4>
+                    <h2 style="color:red;font-weight:bold;">A</h2>
                 </div>
 
               <div class="clearfix"></div>
@@ -54,7 +75,7 @@
           <div class="x_panel">
             <div class="x_title">
                 <div align="center">
-                    <h4 style="color:yellow;font-weight:bold;">B</h4>
+                    <h2 style="color:yellow;font-weight:bold;">B</h2>
                 </div>
 
               <div class="clearfix"></div>
